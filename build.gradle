@@ -26,10 +26,13 @@ repositories {
 		url = uri("https://repo.opencollab.dev/main/")
 	}
 
-	// Serves "creative" library, needed for pack converter
+	// JitPack for GitHub-based dependencies
 	maven {
-		url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+		url = uri("https://jitpack.io")
 	}
+
+	// Serves "creative" library, needed for pack converter
+	mavenCentral()
 }
 
 sourceSets {
@@ -83,8 +86,10 @@ dependencies {
 
 	include api("org.geysermc.pack:converter:${project.pack_converter_version}")
 	include api("org.geysermc.pack:pack-schema-api:${project.pack_converter_version}")
-	include api("team.unnamed:creative-api:1.8.2-SNAPSHOT")
-	include api("team.unnamed:creative-serializer-minecraft:1.8.2-SNAPSHOT")
+
+	// GeyserMC Fork of Creative
+	include api("com.github.GeyserMC.unnamed-creative:creative-api:817fa982c4")
+	include api("com.github.GeyserMC.unnamed-creative:creative-serializer-minecraft:817fa982c4")
 }
 
 processResources {
